@@ -1,0 +1,22 @@
+.header-container{
+    margin-top: 2em;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 6em;
+    padding-right: 6em;
+}
+.nav-container{
+    position: fixed;
+    top:0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-right: 12em;
+}
+
+.nav-container a{
+    padding: .25em .25em
+}
