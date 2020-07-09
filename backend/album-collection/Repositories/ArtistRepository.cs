@@ -7,27 +7,31 @@ using album_collection.Context;
 
 namespace album_collection.Repositories
 {
-    public class ArtistRepository : IRepository<Artist>
+    public class ArtistRepository : Repository<Artist>, IRepository<Artist>
     {
-        private AlbumCollectionAPIcontext db;
-        public ArtistRepository(AlbumCollectionAPIcontext otherDb)
+        public ArtistRepository(AlbumCollectionAPIcontext context) : base(context)
         {
-            this.db = otherDb;
         }
 
-        public void Create(Artist obj)
-        {
-            throw new NotImplementedException();
-        }
+    //    private AlbumCollectionAPIcontext db;
+    //    public ArtistRepository(AlbumCollectionAPIcontext otherDb)
+    //    {
+    //        this.db = otherDb;
+    //    }
 
-        public IEnumerable<Artist> GetAll()
-        {
-            return db.Artists;
-        }
+    //    public void Create(Artist obj)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        public Artist GetById(int id)
-        {
-            return db.Artists.FirstOrDefault(x => x.Id == id);
-        }
+    //    public IEnumerable<Artist> GetAll()
+    //    {
+    //        return db.Artists;
+    //    }
+
+    //    public Artist GetById(int id)
+    //    {
+    //        return db.Artists.FirstOrDefault(x => x.Id == id);
+    //    }
     }
 }
