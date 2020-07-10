@@ -25,7 +25,9 @@ namespace album_collection.Context
 
                 new Artist(1, "The Doors", "image",55, "Alexandria"),
                 new Artist(2, "Bon Jovi", "image",58, "New Jersey"),
-                new Artist(3, "Sonic Youth", "image",39, "Coral Gables")
+                new Artist(3, "Sonic Youth", "image",39, "Coral Gables"),
+                new Artist(4, "Led Zeppelin", "image", 71, "London"),
+                new Artist(5, "Guns n' Roses", "image", 68, "LA") 
                 );
         }
     }

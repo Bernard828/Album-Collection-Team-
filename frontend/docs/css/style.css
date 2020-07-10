@@ -13,3 +13,7 @@
 .nav-container a:hover{
      background-color: olivedrab; 
 }
+
+.artist-collection{
+    list-style: none;
+}
