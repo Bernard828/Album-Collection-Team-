@@ -1,23 +1,34 @@
+//import Header from "./components/header";
+import Footer from "./components/footer";
 import Artists from "./components/Artists";
-console.log("in main.js");
-console.log(Artists);
-console.log("after log artists");
-navArtist();
 
 const appDiv = document.querySelector('.app');
 
-function navArtist() {
-    const artistButton = document.querySelector('.nav__artist');
-    artistButton.addEventListener('click', function(){
-        console.log("word button clicked");
-        fetch("https://localhost:44313/api/artist")
-        .then(response => response.json())
-        .then(artists => {
-            appDiv.innerHTML = Artists(artists);
-            console.log(artists);
+pageBuild();
 
-        })
-        .catch(err => console.log(err))
-        // appDiv.innerHTML = Artist(artist);
+function pageBuild(){
+    //header();
+    footer();
+    showArtists();
+}
+
+function header(){
+    const headerElement = document.querySelector('.header-container');
+    headerElement.innerHTML = Header();
+}
+
+function footer(){
+    const footerElement = document.querySelector('.footer-container');
+    footerElement.innerHTML = Footer();
+}
+
+function showArtists() {
+    fetch("https://localhost:44313/api/artist")
+    .then(response => response.json())
+    .then(artists => {
+        appDiv.innerHTML = Artists(artists);
+        console.log(artists);
+
     })
+    .catch(err => console.log(err))
 }
