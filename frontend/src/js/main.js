@@ -1,15 +1,20 @@
 import Artists from "./components/Artists";
-//navArtist();
+console.log("in main.js");
 console.log(Artists);
+console.log("after log artists");
+navArtist();
+
+const appDiv = document.querySelector('.app');
 
 function navArtist() {
     const artistButton = document.querySelector('.nav__artist');
     artistButton.addEventListener('click', function(){
-        fetch("https://localhost:44393/api/artist")
+        console.log("word button clicked");
+        fetch("https://localhost:44313/api/artist")
         .then(response => response.json())
         .then(artists => {
-            //appDiv.innerHTML = Artist(artist);
-            console.log(Artists);
+            appDiv.innerHTML = Artists(artists);
+            console.log(artists);
 
         })
         .catch(err => console.log(err))

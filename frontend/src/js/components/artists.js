@@ -4,9 +4,9 @@ export default function Artists(artists){
         <ol>
             ${artists.map(artist => {
                 return `
-                    <li>${artist.name} is ${artist.age} year's old, and from ${artist.homeTowm}</li>
+                    <li>${artist.name} is ${artist.age} year's old, and from ${artist.homeTown}</li>
                 `
-            })}
+            }).join("")}
         </ol>
     `
 }
