@@ -4,7 +4,7 @@ export default function Artists(artists){
         <ul class="artist-collection">
             ${artists.map(artist => {
                 return `
-                    <li>${artist.name} is ${artist.age} year's old, and from ${artist.homeTown}</li>
+                    <li><a href="#"> <img src="images/jovi.jpg" alt="image"> ${artist.name}</li>
                 `
             }).join("")}
         </ul>
