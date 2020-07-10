@@ -9,7 +9,7 @@ pageBuild();
 function pageBuild(){
     //header();
     footer();
-    navArtist2();
+    showArtists();
 }
 
 function header(){
@@ -22,24 +22,7 @@ function footer(){
     footerElement.innerHTML = Footer();
 }
 
-// function navArtist() {
-//     const artistButton = document.querySelector('.nav__artist');
-//     artistButton.addEventListener('click', function(){
-//         console.log("word button clicked");
-//         fetch("https://localhost:44313/api/artist")
-//         .then(response => response.json())
-//         .then(artists => {
-//             appDiv.innerHTML = Artists(artists);
-//             console.log(artists);
-
-//         })
-//         .catch(err => console.log(err))
-//         // appDiv.innerHTML = Artist(artist);
-//     })
-// }
-
-function navArtist2() {
-    console.log("in navArtis2")
+function showArtists() {
     fetch("https://localhost:44313/api/artist")
     .then(response => response.json())
     .then(artists => {
@@ -48,5 +31,4 @@ function navArtist2() {
 
     })
     .catch(err => console.log(err))
-    console.log(artists);
 }

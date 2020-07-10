@@ -25,7 +25,7 @@
     /* display: grid;
     grid-row: 3;
     justify-content: space-between; */
-display: grid;
+  display: grid;
   grid-template-columns: auto auto auto;
   grid-gap: 10px;
   padding: 10px;
