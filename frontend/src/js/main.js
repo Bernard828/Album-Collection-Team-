@@ -1,5 +1,7 @@
 import Artists from "./components/Artists";
-navArtist();
+//navArtist();
+console.log(Artists);
+
 function navArtist() {
     const artistButton = document.querySelector('.nav__artist');
     artistButton.addEventListener('click', function(){
