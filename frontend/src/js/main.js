@@ -1,4 +1,4 @@
-//import Header from "./components/header";
+import Header from "./components/header";
 import Footer from "./components/footer";
 import Artists from "./components/Artists";
 
@@ -7,7 +7,7 @@ const appDiv = document.querySelector('.app');
 pageBuild();
 
 function pageBuild(){
-    //header();
+    header();
     footer();
     showArtists();
 }
@@ -15,6 +15,7 @@ function pageBuild(){
 function header(){
     const headerElement = document.querySelector('.header-container');
     headerElement.innerHTML = Header();
+    
 }
 
 function footer(){
