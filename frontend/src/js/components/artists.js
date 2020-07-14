@@ -4,7 +4,7 @@ export default function Artists(artists){
         <ul class="artist-collection">
             ${artists.map(artist => {
                 return `
-                    <li><a href="#"> <img src="images/jovi.jpg" alt="image"> ${artist.name}</a></li>
+                    <li><a class="artist__name" id="${artist.id}" href="#"> <img src="images/jovi.jpg" alt="image"> ${artist.name}</a></li>
                 `
             }).join("")}
         </ul>
