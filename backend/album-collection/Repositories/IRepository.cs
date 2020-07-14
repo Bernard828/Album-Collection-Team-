@@ -12,7 +12,7 @@ namespace album_collection.Repositories
         public IEnumerable<T> GetAll();
         T GetById(int id);
         void Create(T obj);
-        void Delete(Artist artist);
-       void Update(Artist artist);
+        void Delete(T entity);
+        void Update(T entity);
     }
 }

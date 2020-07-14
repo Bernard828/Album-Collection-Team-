@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,19 +15,23 @@ namespace album_collection.Models
         public string RecordLabel { get; set; }
         public string Genre { get; set; }
 
-        public Album()
-        {
+        [JsonIgnore]
+        public virtual Artist Artist { get; set; }
+        public int ArtistId { get; set; }
 
-        }
+        //public Album()
+        //{
 
-        public Album(string name, string imageName, int id, int releaseYear, string recordLabel, string genre)
-        {
-            this.Name = name;
-            this.ImageName = imageName;
-            this.Id = id;
-            this.ReleaseYear = releaseYear;
-            this.RecordLabel = recordLabel;
-            this.Genre = genre;
-        }
+        //}
+
+        //public Album(int id, string name, string imageName, int releaseYear, string recordLabel, string genre)
+        //{
+        //    this.Name = name;
+        //    this.ImageName = imageName;
+        //    this.Id = id;
+        //    this.ReleaseYear = releaseYear;
+        //    this.RecordLabel = recordLabel;
+        //    this.Genre = genre;
+        //}
     }
 }
