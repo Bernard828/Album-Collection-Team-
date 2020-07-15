@@ -3,6 +3,7 @@ using album_collection.Models;
 using album_collection.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -40,25 +41,25 @@ namespace album_collection.Tests
 
             });
 
-            var endCount = db.Artists.Count();
+            var endCount = db.Albums.Count();
 
             Assert.Equal(currentCount + 1, endCount);
         }
 
         [Fact]
-        public void Delete_Decreses_Count_Of_Artists()
+        public void Delete_Decreses_Count_Of_Albums()
         {
-            var currentCount = db.Artists.Count();
+            var currentCount = db.Albums.Count();
 
-            //underTest.Delete(db.Artists[1]);
+            //underTest.Delete(db.Albums[1]);
 
-            var endCount = db.Artists.Count();
+            var endCount = db.Albums.Count();
 
             Assert.Equal(currentCount - 1, endCount);
         }
 
         [Fact]
-        public void Update_Changes_Artist_Name()
+        public void Update_Changes_Album_Name()
         {
 
         }
