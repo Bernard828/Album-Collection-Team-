@@ -8,5 +8,8 @@ export default function Artists(artists){
                 `
             }).join("")}
         </ul>
+        <section class= "add-artist">
+        <button class= "add-artist__button">Add Artist </button>
+        </section>
     `
 }
