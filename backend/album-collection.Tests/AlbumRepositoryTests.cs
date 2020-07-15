@@ -17,13 +17,13 @@ namespace album_collection.Tests
         public AlbumRepositoryTests()
         {
             db = new AlbumCollectionAPIcontext();
-            db.Database.BeginTransaction();
+            //db.Database.BeginTransaction();
             underTest = new AlbumRepository(db);
         }
 
         public void Dispose()
         {
-            db.Database.RollbackTransaction();
+            //db.Database.RollbackTransaction();
         }
 
         [Fact]
@@ -51,8 +51,9 @@ namespace album_collection.Tests
         {
             var currentCount = db.Albums.Count();
 
-            //underTest.Delete(db.Albums[1]);
-
+            var someAlbum = underTest.GetById(1);
+            underTest.Delete(someAlbum);
+            
             var endCount = db.Albums.Count();
 
             Assert.Equal(currentCount - 1, endCount);
