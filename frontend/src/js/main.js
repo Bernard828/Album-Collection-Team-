@@ -4,7 +4,6 @@ import Artists from "./components/Artists";
 import Artist from "./components/Artist";
 import Albums from "./components/Albums";
 import apiActions from "./api/apiActions";
-import artistPost_section from "./components/artistPost_section";
 import ArtistPostSection from "./components/artistPost_section";
 
 const appDiv = document.querySelector('.app');
@@ -79,18 +78,20 @@ function showAlbums() {
     })
 }
 appDiv.addEventListener('click', function () {
-    const addArtistSection = document.querySelector(".add-artist");
-    if (event.target.classList.contains("add-artist__button")) {
-        apiActions.getRequest(`https://localhost44313/api/artist`,
-            artist => {
-                console.log(artist);
-                addArtistSection.innerHTML = ArtistPostSection(artist);
-
-            })
-
-    }
+    console.log("add artist button click");
+    const addArtistSection = document.querySelector('.add-artist');
+    console.log(addArtistSection);
+    // if (event.target.classList.contains('add-artist__button')) {
+    //     console.log("if statement");
+    //     apiActions.getRequest(`https://localhost44313/api/artist`,
+    //         artist => {
+    //             console.log(artist);
+    //             addArtistSection.innerHTML = ArtistPostSection(artist);
+    //             console.log("after innerHTML")
+    //         })
+    // }
 })
-appDiv.addEventListener('click'), function () {
+appDiv.addEventListener('click', function () {
     if (event.target.classList.contains('add-artist__submit')) {
         const artistName = event.target.ParentElement.querySelector(".add-artist__ArtistName").value;
         const artistImageName = event.target.ParentElement.querySelector(".add-artist__ArtistImageName").value;
@@ -98,7 +99,10 @@ appDiv.addEventListener('click'), function () {
         const artistHomeTown = event.target.ParentElement.querySelector(".add-artist__ArtistHomeTown").value;
         console.log(artistName);
         var requestBody = {
-            Name: artistName, ImageName: artistImageName, Age: artistAge, HomeTown: artistHomeTown
+            Name: artistName,
+            ImageName: artistImageName,
+            Age: artistAge,
+            HomeTown: artistHomeTown
         }
         apiActions.postRequest(
             "https://localhost44313/api/artist", requestBody, newArtists => {
@@ -108,4 +112,4 @@ appDiv.addEventListener('click'), function () {
             }
         )
     }
-}
+})
