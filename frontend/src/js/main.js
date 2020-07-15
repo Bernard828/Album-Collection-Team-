@@ -10,6 +10,7 @@ const appDiv = document.querySelector('.app');
 export default function pageBuild(){
     header();
     footer();
+    navHome();
     showArtists();
     //showAlbums();
 }
@@ -23,6 +24,14 @@ function header(){
 function footer(){
     const footerElement = document.querySelector('.footer-container');
     footerElement.innerHTML = Footer();
+}
+
+function navHome(){
+    const homeButton = document.querySelector('.nav__home');
+    homeButton.addEventListener('click', function(){
+        appDiv.innerHTML = showArtists();
+    })
+
 }
 
 function showArtists() {
