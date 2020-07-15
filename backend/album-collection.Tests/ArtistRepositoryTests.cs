@@ -36,7 +36,7 @@ namespace album_collection.Tests
                 Name = "Random Name",
                 ImageName = "Random Image",
                 Age = 4,
-                HomeTown = "Random Town"
+                HomeTown = "Random Town",
 
             });
 
@@ -50,7 +50,7 @@ namespace album_collection.Tests
         {
             var currentCount = db.Artists.Count();
 
-            //underTest.Delete(db.Artists[1]);
+            underTest.Delete(underTest.GetById(1));
 
             var endCount = db.Artists.Count();
 

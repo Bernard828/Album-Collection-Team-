@@ -17,13 +17,13 @@ namespace album_collection.Tests
         public AlbumRepositoryTests()
         {
             db = new AlbumCollectionAPIcontext();
-            //db.Database.BeginTransaction();
+            db.Database.BeginTransaction();
             underTest = new AlbumRepository(db);
         }
 
         public void Dispose()
         {
-            //db.Database.RollbackTransaction();
+            db.Database.RollbackTransaction();
         }
 
         [Fact]
@@ -38,6 +38,7 @@ namespace album_collection.Tests
                 ReleaseYear = 4,
                 RecordLabel = "Random Label",
                 Genre = "Random Genre",
+                ArtistId = 1
 
             });
 
@@ -51,7 +52,7 @@ namespace album_collection.Tests
         {
             var currentCount = db.Albums.Count();
 
-            var someAlbum = underTest.GetById(1);
+            var someAlbum = underTest.GetById(3);
             underTest.Delete(someAlbum);
             
             var endCount = db.Albums.Count();
