@@ -11,7 +11,7 @@ export default function pageBuild(){
     header();
     footer();
     showArtists();
-    showAlbums();
+    //showAlbums();
 }
 
 function header(){
@@ -38,13 +38,17 @@ function showArtists() {
 }
 function artistNameButton(){
     const artistNameElement = document.querySelectorAll('.artist__name');
+    //console.log(artistNameButton);
     artistNameElement.forEach (element => {
         element.addEventListener('click' , function(){
             const artistId = element.id;
-            fetch("https://localhost:44313/api/artist/${artistId}")
+            console.log("artist Name clicked");
+            console.log(artistId);
+            fetch(`https://localhost:44313/api/artist/${artistId}`)
             .then(response => response.json())
             .then(artist => {
                 appDiv.innerHTML = Artist(artist);
+                showAlbums();
             })
             .catch(err => console.log(err))
         })
