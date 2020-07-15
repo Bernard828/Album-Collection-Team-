@@ -81,34 +81,49 @@ appDiv.addEventListener('click', function () {
     console.log("add artist button click");
     const addArtistSection = document.querySelector('.add-artist');
     console.log(addArtistSection);
-    // if (event.target.classList.contains('add-artist__button')) {
-    //     console.log("if statement");
-    //     apiActions.getRequest(`https://localhost44313/api/artist`,
-    //         artist => {
-    //             console.log(artist);
-    //             addArtistSection.innerHTML = ArtistPostSection(artist);
-    //             console.log("after innerHTML")
-    //         })
-    // }
+    if (event.target.classList.contains('add-artist__button')) {
+        console.log("if statement");
+        // apiActions.getRequest(`https://localhost44313/api/artist`,
+        //     artist => {
+        //         console.log(artist);
+        //         addArtistSection.innerHTML = ArtistPostSection(artist);
+        //         console.log("after innerHTML")
+        //     })
+        
+        //console.log(artist);
+        //addArtistSection.innerHTML = ArtistPostSection(artist);
+        addArtistSection.innerHTML = ArtistPostSection();
+        console.log("after innerHTML")
+        //console.log(artist);
+    }
 })
 appDiv.addEventListener('click', function () {
     if (event.target.classList.contains('add-artist__submit')) {
-        const artistName = event.target.ParentElement.querySelector(".add-artist__ArtistName").value;
-        const artistImageName = event.target.ParentElement.querySelector(".add-artist__ArtistImageName").value;
-        const artistAge = event.target.ParentElement.querySelector(".add-artist__ArtistAge").value;
-        const artistHomeTown = event.target.ParentElement.querySelector(".add-artist__ArtistHomeTown").value;
-        console.log(artistName);
+        const artistName = event.target.parentElement.querySelector(".add-artist__artistName").value;
+        const artistImageName = event.target.parentElement.querySelector(".add-artist__artistImageName").value;
+        const artistAge = event.target.parentElement.querySelector(".add-artist__artistAge").value;
+        const artistHomeTown = event.target.parentElement.querySelector(".add-artist__artistHomeTown").value;
+        console.log("after const declarations");
+        console.log("artist name = " + artistName);
+        console.log("artist image = " + artistImageName);
+        console.log("artist age = " + artistAge);
+        console.log("artist home = " + artistHomeTown);
+
         var requestBody = {
             Name: artistName,
             ImageName: artistImageName,
             Age: artistAge,
             HomeTown: artistHomeTown
         }
+        console.log("requestBody set");
+        console.log(requestBody);
         apiActions.postRequest(
-            "https://localhost44313/api/artist", requestBody, newArtists => {
+            "https://localhost:44313/api/artist",
+            requestBody, 
+            newArtists => {
                 console.log("artist return from backend");
                 console.log(newArtists);
-                appDiv.innerHTML = Artist(newArtists);
+                appDiv.innerHTML = Artists(newArtists);
             }
         )
     }
