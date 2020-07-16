@@ -5,6 +5,7 @@ import Artist from "./components/Artist";
 import Albums from "./components/Albums";
 import apiActions from "./api/apiActions";
 import ArtistPostSection from "./components/artistPost_section";
+import AlbumPostSection from "./components/albumPost_section";
 
 const appDiv = document.querySelector('.app');
 
@@ -59,7 +60,7 @@ function artistNameButton() {
                 .then(response => response.json())
                 .then(artist => {
                     appDiv.innerHTML = Artist(artist);
-                    showAlbums();
+                   // showAlbums();
                 })
                 .catch(err => console.log(err))
         })
@@ -72,7 +73,7 @@ function showAlbums() {
             .then(response => response.json())
             .then(albums => {
                 appDiv.innerHTML = Albums(albums);
-
+            
             })
             .catch(err => console.log(err))
     })
@@ -98,6 +99,7 @@ appDiv.addEventListener('click', function () {
     }
 })
 appDiv.addEventListener('click', function () {
+    console.log("add artist submit click");
     if (event.target.classList.contains('add-artist__submit')) {
         const artistName = event.target.parentElement.querySelector(".add-artist__artistName").value;
         const artistImageName = event.target.parentElement.querySelector(".add-artist__artistImageName").value;
@@ -127,4 +129,45 @@ appDiv.addEventListener('click', function () {
             }
         )
     }
+    
+})
+appDiv.addEventListener('click', function () {
+    console.log("add album button click");
+    const addAlbumSection = document.querySelector('.add-album');
+    const artistId = event.target.parentElement.querySelector(".add-album__button").id;
+    console.log(addAlbumSection);
+    console.log("artistId="+artistId);
+    if (event.target.classList.contains('add-album__button')) {
+        
+        addAlbumSection.innerHTML = AlbumPostSection();
+        console.log("after innerHTML")
+    }
+})
+appDiv.addEventListener('click', function () {
+    console.log("add album submit click");
+    if (event.target.classList.contains('add-album__submit')) {
+        const albumName = event.target.parentElement.querySelector(".add-album__albumName").value;
+        const albumImageName = event.target.parentElement.querySelector(".add-album__albumImageName").value;
+        const albumReleaseYear = event.target.parentElement.querySelector(".add-album__releaseYear").value;
+        const albumRecordLabel = event.target.parentElement.querySelector(".add-album__recordLabel").value;
+        const albumGenre = event.target.parentElement.querySelector(".add-album__albumGenre").value;
+        const artistId = event.target.parentElement.querySelector(".add-artist__artistId").value;
+
+        var requestBody = {
+            Name: albumName,
+            ImageName: albumImageName,
+            ReleaseYear: albumReleaseYear,
+            RecordLabel: albumRecordLabel,
+            Genre: albumGenre,
+            ArtistId: artistId
+        }
+        apiActions.postRequest(
+            "https://localhost:44313/api/album",
+            requestBody, 
+            newAlbums => {
+                appDiv.innerHTML = Albums(newAlbums);
+            }
+        )
+    }
+    
 })
