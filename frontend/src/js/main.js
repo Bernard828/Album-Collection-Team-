@@ -167,17 +167,23 @@ appDiv.addEventListener('click', function () {
              Genre: albumGenre,
              ArtistId: artistId
          }
+         console.log(requestBody);
+
+         const artistCallback = () => {
+             apiActions.getRequest(
+                 `https://localhost:44313/api/artist/${artistId}`,
+                 artist => {
+                     console.log("In callback");
+                     console.log(artist);
+                     appDiv.innerHTML = Artist(artist);
+                 })
+         }
 
         apiActions.postRequest(
             "https://localhost:44313/api/album",
             requestBody, 
-             newalbum => {
-                 console.log("before appDiv");
-             //    appDiv.innerHTML = Artist(artist);
-                appDiv.innerHTML = Artist(getArtist);
-
-            }
+            artistCallback
         )
     }
-    
 })
+
