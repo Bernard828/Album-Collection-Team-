@@ -10,6 +10,8 @@ namespace album_collection.Context
     public class AlbumCollectionAPIcontext : DbContext
     {
         public DbSet<Artist> Artists { get; set; }
+        public DbSet<Album> Albums { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = "Server=(localdb)\\mssqllocaldb;Database=AlbumCollection_Database;Trusted_Connection=True;";

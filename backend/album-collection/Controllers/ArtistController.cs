@@ -30,15 +30,17 @@ namespace album_collection.Controllers
 
         // GET api/<ArtistController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Artist Get(int id)
         {
-            return "value";
+            return artistRepo.GetById(id);
         }
 
         // POST api/<ArtistController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IEnumerable<Artist>  Post([FromBody] Artist  value)
         {
+            artistRepo.Create(value);
+            return artistRepo.GetAll();
         }
 
         // PUT api/<ArtistController>/5

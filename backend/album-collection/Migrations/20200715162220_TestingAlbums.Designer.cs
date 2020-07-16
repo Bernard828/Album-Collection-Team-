@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using album_collection.Context;
 
 namespace album_collection.Migrations
 {
     [DbContext(typeof(AlbumCollectionAPIcontext))]
-    partial class AlbumCollectionAPIcontextModelSnapshot : ModelSnapshot
+    [Migration("20200715162220_TestingAlbums")]
+    partial class TestingAlbums
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
