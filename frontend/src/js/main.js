@@ -38,6 +38,24 @@ function navHome() {
 
 }
 
+function navArtist(artistId, artistName) {
+    const variableButtonElement = document.querySelector('.nav__variable');
+    variableButtonElement.removeAttribute("hidden");
+    variableButtonElement.innerHTML = artistName;
+    variableButtonElement.addEventListener('click', function () {
+        const endpoint = `https://localhost:44313/api/artist/${artistId}`;
+        const callBack = artist => {
+            appDiv.innerHTML = Artist(artist);
+            albumNameButton();
+            console.log("before setAttribute");
+            variableButtonElement.setAttribute("hidden", "true");
+            console.log("after setAttribute");
+        };
+        apiActions.getRequest(endpoint, callBack); 
+    })
+}
+
+
 function showArtists() {
     fetch("https://localhost:44313/api/artist")
         .then(response => response.json())
@@ -60,13 +78,13 @@ function artistNameButton() {
             const artistEndpoint = `https://localhost:44313/api/artist/${artistId}`;
             const artistCallback = artist => {
                 appDiv.innerHTML = Artist(artist);
-                albumNameButton();
+                albumNameButton(artistId, artist.name);
             };
             apiActions.getRequest(artistEndpoint, artistCallback);
         })
     })
 }
-function albumNameButton() {
+function albumNameButton(artistId, artistName) {
     const albumNameElement = document.querySelectorAll('.album__name');
     //console.log(artistNameButton);
     albumNameElement.forEach(element => {
@@ -77,6 +95,7 @@ function albumNameButton() {
             const endpoint = `https://localhost:44313/api/album/${albumId}`;
             const callBack = album => {
                 appDiv.innerHTML = Album(album);
+                navArtist(artistId, artistName);
             };
             apiActions.getRequest(endpoint, callBack);
         })
@@ -192,7 +211,9 @@ appDiv.addEventListener('click', function () {
                     console.log("In callback");
                     console.log(artist);
                     appDiv.innerHTML = Artist(artist);
+                    albumNameButton();
                 })
+            
         }
 
         apiActions.postRequest(
