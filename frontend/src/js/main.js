@@ -76,11 +76,12 @@ function albumNameButton() {
             console.log("Album clicked");
             console.log(albumId);
             fetch(`https://localhost:44313/api/album/${albumId}`)
-                .then(response => response.json())
+                .then(response => response.json())                
                 .then(album => {
                     appDiv.innerHTML = Album(album);
                 })
-                .catch(err => console.log(err))
+                .catch(err => console.log(err)
+            )
         })
     })
 }

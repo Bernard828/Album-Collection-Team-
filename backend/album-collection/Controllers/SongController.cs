@@ -27,15 +27,16 @@ namespace album_collection.Controllers
 
         // GET: api/Song/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public Song Get(int id)
         {
-            return "value";
+            return songRepo.GetById(id);
         }
 
         // POST: api/Song
         [HttpPost]
         public void Post([FromBody] string value)
         {
+          
         }
 
         // PUT: api/Song/5
