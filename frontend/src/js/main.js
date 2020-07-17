@@ -57,13 +57,12 @@ function artistNameButton() {
             const artistId = element.id;
             console.log("artist Name clicked");
             console.log(artistId);
-            fetch(`https://localhost:44313/api/artist/${artistId}`)
-                .then(response => response.json())
-                .then(artist => {
-                    appDiv.innerHTML = Artist(artist);
-                    albumNameButton();                   
-                })
-                .catch(err => console.log(err))
+            const artistEndpoint = `https://localhost:44313/api/artist/${artistId}`;
+            const artistCallback = artist => {
+                appDiv.innerHTML = Artist(artist);
+                albumNameButton();
+            };
+            apiActions.getRequest(artistEndpoint, artistCallback);
         })
     })
 }
@@ -75,13 +74,11 @@ function albumNameButton() {
             const albumId = element.id;
             console.log("Album clicked");
             console.log(albumId);
-            fetch(`https://localhost:44313/api/album/${albumId}`)
-                .then(response => response.json())                
-                .then(album => {
-                    appDiv.innerHTML = Album(album);
-                })
-                .catch(err => console.log(err)
-            )
+            const endpoint = `https://localhost:44313/api/album/${albumId}`;
+            const callBack = album => {
+                appDiv.innerHTML = Album(album);
+            };
+            apiActions.getRequest(endpoint, callBack);
         })
     })
 }
