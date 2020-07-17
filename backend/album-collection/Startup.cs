@@ -41,6 +41,7 @@ namespace album_collection
             services.AddDbContext<AlbumCollectionAPIcontext>();
             services.AddScoped<IRepository<Artist>, ArtistRepository>();
             services.AddScoped<IRepository<Album>, AlbumRepository>();
+            services.AddScoped<IRepository<Song>, SongRepository>();
 
             // used for asp.net 3.1 cors issue
             services.AddCors(options =>

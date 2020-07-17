@@ -2,46 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using album_collection.Models;
 using album_collection.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using album_collection.Models;
 
 namespace album_collection.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlbumController : ControllerBase
+    public class SongController : ControllerBase
     {
-        IRepository<Album> albumRepo;
-        public AlbumController(IRepository<Album> albumRepo)
+        private IRepository<Song> songRepo;
+        public SongController(IRepository<Song> songRepo)
         {
-            this.albumRepo = albumRepo;
+            this.songRepo = songRepo;
         }
-
-        // GET: api/Album
+        // GET: api/Song
         [HttpGet]
-        public IEnumerable<Album> Get()
+        public IEnumerable<Song> Get()
         {
-            return albumRepo.GetAll();
+            return songRepo.GetAll();
         }
 
-        // GET: api/Album/5
-        [HttpGet("{id}")]
-        public Album Get(int id)
+        // GET: api/Song/5
+        [HttpGet("{id}", Name = "Get")]
+        public Song Get(int id)
         {
-            return albumRepo.GetById(id);
+            return songRepo.GetById(id);
         }
 
-        // POST: api/Album
+        // POST: api/Song
         [HttpPost]
-        public IEnumerable<Album> Post([FromBody] Album value)
+        public void Post([FromBody] string value)
         {
-            albumRepo.Create(value);
-            return albumRepo.GetAll();
+          
         }
 
-        // PUT: api/Album/5
+        // PUT: api/Song/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

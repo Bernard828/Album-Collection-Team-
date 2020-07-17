@@ -11,6 +11,7 @@ namespace album_collection.Context
     {
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Album> Albums { get; set; }
+        public DbSet<Song> Songs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -40,6 +41,22 @@ namespace album_collection.Context
                  new Album { Id = 6, Name = "Use Your Illusion II", ImageName = "image", ReleaseYear = 1991, RecordLabel = "Atlantic", Genre = "Rock", ArtistId = 5 }
 
                );
+            modelbuilder.Entity<Song>().HasData(
+                new Song { Id = 1, Title = "Roadhouse Blues", Duration = "4:03", AlbumId = 1 },
+                new Song { Id = 2, Title = "Peace Frog", Duration = "2:58", AlbumId = 1},
+                new Song { Id = 3, Title = "Keep the Faith", Duration = "5:46", AlbumId = 2},
+                new Song { Id = 4, Title = "Bed of Roses", Duration = "6:00", AlbumId = 2},
+                new Song { Id = 5, Title = "Kool Thing", Duration = "4:06", AlbumId = 3 },
+                new Song { Id = 6, Title = "Dirty Boots", Duration = "5:30", AlbumId = 3 },
+                new Song { Id = 7, Title = "The Battle Evermore", Duration = "5:34", AlbumId = 4 },
+                new Song { Id = 8, Title = "When the Levy Breaks", Duration = "7:08", AlbumId = 4 },
+                new Song { Id = 9, Title = "Right Next Door to Hell", Duration = "3:02", AlbumId = 5 },
+                new Song { Id = 10, Title = "Don't Cry", Duration = "4:45", AlbumId = 5 },
+                new Song { Id = 11, Title = "Knockin' on Heaven's Door", Duration = "5:36", AlbumId = 6 },
+                new Song { Id = 12, Title = "You Could Be Mine", Duration = "5:43", AlbumId = 6 }
+
+
+                );
 
         }
     }
