@@ -4,7 +4,7 @@ export default function Artist(artist){
     <ul>
     ${artist.albums.map(album =>{
         return `
-        <li>${album.name}</li>
+        <li> <a class="album__name" id="${album.id}"  href= "#"> ${album.name} </a> </li>
         `
     }).join("")}
     </ul>
