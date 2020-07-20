@@ -7,6 +7,7 @@ import apiActions from "./api/apiActions";
 import ArtistPostSection from "./components/artistPost_section";
 import AlbumPostSection from "./components/albumPost_section";
 import Album from "./components/album";
+import SongPostSection from "./components/songPost_section";
 
 const appDiv = document.querySelector('.app');
 
@@ -223,4 +224,17 @@ appDiv.addEventListener('click', function () {
         )
     }
 })
+appDiv.addEventListener('click', function () {
+    if (event.target.classList.contains('add-song__button')) {
+        console.log("add song button click");
+        const addSongSection = document.querySelector('.add-song');
+        const albumId = event.target.parentElement.querySelector(".add-song__button").id;
+        console.log(addSongSection);
+        console.log("albumId=" + albumId);
+
+        addSongSection.innerHTML = SongPostSection(albumId);
+        console.log("after innerHTML")
+    }
+})
+
 

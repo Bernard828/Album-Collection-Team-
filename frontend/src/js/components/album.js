@@ -8,5 +8,9 @@ export default function Album(album) {
         `
     }).join("")}
     </ul>    
+    <section class= "add-song">
+    <button class= "add-song__button" Id="${album.id}">Add Song </button>
+    <button class="delete-album__button" Id="${album.id}">Delete This Album</button>
+    </section>
 `
 }
