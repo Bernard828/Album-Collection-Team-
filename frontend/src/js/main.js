@@ -237,4 +237,41 @@ appDiv.addEventListener('click', function () {
     }
 })
 
+appDiv.addEventListener('click', function () {
+    console.log("add song submit click");
+    if (event.target.classList.contains('add-song__submit')) {
+        console.log("in If");
+        const songTitle = event.target.parentElement.querySelector(".add-song__songTitle").value;
+        const songDuration = event.target.parentElement.querySelector(".add-song__songDuration").value;
+        const albumId = event.target.parentElement.querySelector(".add-song__albumId").value;
+        console.log(songTitle);
+        console.log(songDuration);
+        console.log("albumID=" + albumId);
+        console.log("before request body");
+        var requestBody = {
+            Title: songTitle,
+            Duration: songDuration,
+            AlbumId: albumId
+        }
+        console.log(requestBody);
+
+        const albumCallback = () => {
+            apiActions.getRequest(
+                `https://localhost:44313/api/album/${albumId}`,
+                album => {
+                    console.log("In callback");
+                    console.log(album);
+                    appDiv.innerHTML = Album(album);
+                })
+            
+        }
+
+        apiActions.postRequest(
+            "https://localhost:44313/api/song",
+            requestBody,
+            albumCallback
+        )
+    }
+})
+
 
