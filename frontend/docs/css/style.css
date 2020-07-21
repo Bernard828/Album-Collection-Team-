@@ -1,7 +1,10 @@
-
+body{
+    background-image: url(/images/background2.jpg);
+    background-size: cover;
+}
 
 .nav-container{
-    background-color: green;
+    background-color:green;
 }
 
 .nav-container a{
@@ -14,6 +17,6 @@
      background-color: olivedrab; 
 }
 
-.artist-collection{
+.artist-collection, .album-collection{
     list-style: none;
 }
