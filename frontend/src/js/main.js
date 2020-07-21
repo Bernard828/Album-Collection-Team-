@@ -238,9 +238,8 @@ appDiv.addEventListener('click', function () {
 })
 
 appDiv.addEventListener('click', function () {
-    console.log("add song submit click");
     if (event.target.classList.contains('add-song__submit')) {
-        console.log("in If");
+        console.log("add song submit click");
         const songTitle = event.target.parentElement.querySelector(".add-song__songTitle").value;
         const songDuration = event.target.parentElement.querySelector(".add-song__songDuration").value;
         const albumId = event.target.parentElement.querySelector(".add-song__albumId").value;
@@ -274,4 +273,29 @@ appDiv.addEventListener('click', function () {
     }
 })
 
+appDiv.addEventListener('click', function(){
+    if(event.target.classList.contains('delete-album__button')){
+        console.log("inside delete album")
+        const albumId = event.target.parentElement.querySelector('.delete-album__button').id;
+        const artistId = event.target.parentElement.querySelector('.artistId').value;
+        console.log(albumId);
+        console.log(artistId);
 
+        const artistCallback = () => {
+            apiActions.getRequest(
+                `https://localhost:44313/api/artist/${artistId}`,
+                artist => {
+                    console.log("In callback");
+                    console.log(artist);
+                    appDiv.innerHTML = Artist(artist);
+                    albumNameButton();
+                })
+            
+        }
+
+        apiActions.deleteRequest(
+            `https://localhost:44313/api/album/${albumId}`,
+            artistCallback
+        )
+    }
+})
