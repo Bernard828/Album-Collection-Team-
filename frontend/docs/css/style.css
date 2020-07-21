@@ -1,0 +1,19 @@
+
+
+.nav-container{
+    background-color: green;
+}
+
+.nav-container a{
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+}
+
+.nav-container a:hover{
+     background-color: olivedrab; 
+}
+
+.artist-collection{
+    list-style: none;
+}

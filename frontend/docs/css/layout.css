@@ -1,0 +1,41 @@
+.header-container{
+    margin-top: 2em;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 6em;
+    padding-right: 6em;
+}
+.nav-container{
+    position: fixed;
+    top:0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-right: 12em;
+}
+
+.nav-container a{
+    padding: .25em .25em
+}
+
+.artist-collection{
+    /* display: flex;
+    flex: 3;
+    justify-content: space-between;  */
+
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 1em;
+
+
+}
+
+.artist-collection img {
+    width: 100px;
+    height: 100px;
+}
