@@ -9,7 +9,7 @@ export default function Artists(artists){
                 return `
                     <li>
                     <a class="artist__name" id="${artist.id}" href="#"> 
-                    <p> <img src="images/jovi.jpg" alt="image"> </p>
+                    <p> <img src="images/${artist.imageName}" alt="image" style="width:100px; height:100px;"> </p>
                      ${artist.name}</a>
                      </li>
                 `

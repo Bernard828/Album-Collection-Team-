@@ -5,7 +5,7 @@ export default function Artist(artist) {
         ${artist.albums.map(album => {
         return `
                 <li>
-                   <p> <img src="images/morrisonHotel.jpg" alt="image"> </p>
+                   <p> <img src="images/${album.imageName}" alt="image"> </p>
                     <a class="album__name" id="${album.id}"  href= "#"> ${album.name} </a> 
                     <ul>
                     <li> ${album.releaseYear} </li>
