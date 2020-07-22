@@ -11,6 +11,7 @@ export default function Album(album) {
     <section class= "add-song">
     <button class= "add-song__button" Id="${album.id}">Add Song </button>
     <button class="delete-album__button" Id="${album.id}">Delete This Album</button>
+    <button class="edit-album__button" Id="${album.id}"> Edit This Album</button>
     <input class="artistId" type="hidden" value="${album.artistId}"> 
     </section>
 `
