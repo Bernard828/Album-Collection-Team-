@@ -1,12 +1,13 @@
 export default function Album(album) {
     return `
   <h1>${album.name}</h1>
+  <button class= "nav-artist-return__button" Id="${album.artistId}">Back to artist</button>
     <ol class="song-collection">
     ${album.songs.map(song => {
         return `
         <li>${song.title} -- ${song.duration}</li>
         `
-    }).join("")}
+      }).join("")}
     </ol>    
     <section class= "add-song">
     <button class= "add-song__button" Id="${album.id}">Add Song </button>
