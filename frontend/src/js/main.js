@@ -97,7 +97,7 @@ function albumNameButton(artistId, artistName) {
             const endpoint = `https://localhost:44313/api/album/${albumId}`;
             const callBack = album => {
                 appDiv.innerHTML = Album(album);
-                navArtist(artistId, artistName);
+                //navArtist(artistId, artistName);
             };
             apiActions.getRequest(endpoint, callBack);
         })
@@ -354,3 +354,16 @@ appDiv.addEventListener("click", function () {
         )
     }
 })
+
+appDiv.addEventListener("click", function () {
+    if (event.target.classList.contains('nav-artist-return__button')){
+        const artistId = event.target.parentElement.querySelector(".nav-artist-return__button").id;
+        const endpoint = `https://localhost:44313/api/artist/${artistId}`;
+        const callBack = artist => {
+            appDiv.innerHTML = Artist(artist);
+            albumNameButton();
+        };
+        apiActions.getRequest(endpoint, callBack); 
+    }
+})
+
