@@ -63,7 +63,12 @@ namespace album_collection.Tests
         [Fact]
         public void Update_Changes_Album_Name()
         {
-
+            var currentAlbum = underTest.GetById(1);
+            var currentAlbumName = currentAlbum.Name;
+            currentAlbum.Name = "TheRollingStones";
+            underTest.Update(currentAlbum);
+            Assert.NotEqual(currentAlbum.Name, currentAlbumName);
         }
+
     }
 }
