@@ -60,7 +60,11 @@ namespace album_collection.Tests
         [Fact]
         public void Update_Changes_Artist_Name()
         {
-
+            var currentArtist = underTest.GetById(1);
+            var currentArtistName = currentArtist.Name;
+            currentArtist.Name = "TheRollingStones";
+            underTest.Update(currentArtist);
+            Assert.NotEqual(currentArtist.Name, currentArtistName);
         }
     }
 }
