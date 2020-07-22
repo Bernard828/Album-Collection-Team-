@@ -9,6 +9,7 @@ import AlbumPostSection from "./components/albumPost_section";
 import Album from "./components/album";
 import SongPostSection from "./components/songPost_section";
 import AlbumEditSection from "./components/albumEdit_section";
+import SongEditSection from "./components/songEdit_section";
 
 const appDiv = document.querySelector('.app');
 
@@ -302,6 +303,7 @@ appDiv.addEventListener('click', function(){
 })
 appDiv.addEventListener("click", function () {
     if (event.target.classList.contains('edit-album__button')) {
+        const editAlbumSection = document.querySelector('.edit-album');
         const albumId = event.target.parentElement.querySelector('.edit-album__button').id;
         const artistId = event.target.parentElement.querySelector('.artistId').value;
         console.log("albumid="+albumId);
@@ -311,7 +313,7 @@ appDiv.addEventListener("click", function () {
             albumEdit => {
                 console.log("in edit album get request");
                 console.log(albumEdit);
-                appDiv.innerHTML = AlbumEditSection(artistId,albumEdit);
+                editAlbumSection.innerHTML = AlbumEditSection(artistId,albumEdit);
             }
         )
     }
@@ -364,6 +366,91 @@ appDiv.addEventListener("click", function () {
             albumNameButton();
         };
         apiActions.getRequest(endpoint, callBack); 
+    }
+})
+
+appDiv.addEventListener("click", function (){
+    if (event.target.classList.contains('delete-song__button')){
+        console.log("in if for delete song");
+        const songId = event.target.parentElement.querySelector(".delete-song__button").id;
+        const albumId = event.target.parentElement.querySelector(".delete-song__button").value;
+        console.log("songid="+songId);
+        console.log("albumid="+albumId);
+        const endpoint = `https://localhost:44313/api/song/${songId}`;
+        // const callBack = album => {
+        //     console.log("in call back for delete song");
+        //     appDiv.innerHTML = Album(album);
+
+        // };
+        const albumCallback = () => {
+            apiActions.getRequest(
+                `https://localhost:44313/api/album/${albumId}`,
+                album => {
+                    console.log("In callback for delete song");
+                    console.log(album);
+                    appDiv.innerHTML = Album(album);
+                })
+            
+        }
+
+        //apiActions.getRequest(endpoint, albumCallback); 
+        apiActions.deleteRequest(endpoint, albumCallback);
+    }
+
+})
+
+appDiv.addEventListener("click", function () {
+    if (event.target.classList.contains('update-song__button')) {
+        console.log("in edit song if");
+        const editSongSection =  document.querySelector('.edit-song');
+        const songId = event.target.parentElement.querySelector('.update-song__button').id;
+        const albumId = event.target.parentElement.querySelector('.update-song__button').value;
+        console.log("songId="+songId);
+        console.log("albumId="+albumId);        
+        apiActions.getRequest(
+            `https://localhost:44313/api/song/${songId}` ,
+            songEdit => {
+                console.log("in edit song get request");
+                console.log(songEdit);
+                editSongSection.innerHTML = SongEditSection(songEdit, albumId);
+            }
+        )
+    }
+})
+
+appDiv.addEventListener("click", function () {
+    if (event.target.classList.contains('edit-song__submit')) {
+        console.log("in update song");
+        const songId = event.target.parentElement.querySelector(".edit-song__songId").value;
+        const albumId = event.target.parentElement.querySelector('.edit-song__albumId').value;
+        const songTitle = event.target.parentElement.querySelector('.edit-song__songTitle').value;
+        const songDuration = event.target.parentElement.querySelector('.edit-song__songDuration').value;
+        console.log("songid="+songId);
+        console.log("albumID="+albumId);
+        console.log(songTitle);
+        console.log(songDuration);
+        const songEdit = {
+            id: songId,
+            Title: songTitle,
+            Duration: songDuration,
+            AlbumId: albumId
+        };
+        console.log(songEdit)
+        const albumCallback = () => {
+            apiActions.getRequest(
+                `https://localhost:44313/api/album/${albumId}`,
+                album => {
+                    console.log("In callback for album");
+                    console.log(album);
+                    appDiv.innerHTML = Album(album);
+                    albumNameButton();
+                })
+        }
+        apiActions.putRequest(
+            `https://localhost:44313/api/song/${songId}`,
+            songEdit,
+            albumCallback
+        )
     }
 })
 
