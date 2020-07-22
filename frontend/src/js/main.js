@@ -367,3 +367,32 @@ appDiv.addEventListener("click", function () {
     }
 })
 
+appDiv.addEventListener("click", function (){
+    if (event.target.classList.contains('delete-song__button')){
+        console.log("in if for delete song");
+        const songId = event.target.parentElement.querySelector(".delete-song__button").id;
+        const albumId = event.target.parentElement.querySelector(".delete-song__button").value;
+        console.log("songid="+songId);
+        console.log("albumid="+albumId);
+        const endpoint = `https://localhost:44313/api/song/${songId}`;
+        // const callBack = album => {
+        //     console.log("in call back for delete song");
+        //     appDiv.innerHTML = Album(album);
+
+        // };
+        const albumCallback = () => {
+            apiActions.getRequest(
+                `https://localhost:44313/api/album/${albumId}`,
+                album => {
+                    console.log("In callback for delete song");
+                    console.log(album);
+                    appDiv.innerHTML = Album(album);
+                })
+            
+        }
+
+        //apiActions.getRequest(endpoint, albumCallback); 
+        apiActions.deleteRequest(endpoint, albumCallback);
+    }
+
+})
