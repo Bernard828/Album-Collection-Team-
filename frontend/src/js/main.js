@@ -303,6 +303,7 @@ appDiv.addEventListener('click', function(){
 })
 appDiv.addEventListener("click", function () {
     if (event.target.classList.contains('edit-album__button')) {
+        const editAlbumSection = document.querySelector('.edit-album');
         const albumId = event.target.parentElement.querySelector('.edit-album__button').id;
         const artistId = event.target.parentElement.querySelector('.artistId').value;
         console.log("albumid="+albumId);
@@ -312,7 +313,7 @@ appDiv.addEventListener("click", function () {
             albumEdit => {
                 console.log("in edit album get request");
                 console.log(albumEdit);
-                appDiv.innerHTML = AlbumEditSection(artistId,albumEdit);
+                editAlbumSection.innerHTML = AlbumEditSection(artistId,albumEdit);
             }
         )
     }
@@ -401,6 +402,7 @@ appDiv.addEventListener("click", function (){
 appDiv.addEventListener("click", function () {
     if (event.target.classList.contains('update-song__button')) {
         console.log("in edit song if");
+        const editSongSection =  document.querySelector('.edit-song');
         const songId = event.target.parentElement.querySelector('.update-song__button').id;
         const albumId = event.target.parentElement.querySelector('.update-song__button').value;
         console.log("songId="+songId);
@@ -410,7 +412,7 @@ appDiv.addEventListener("click", function () {
             songEdit => {
                 console.log("in edit song get request");
                 console.log(songEdit);
-                appDiv.innerHTML = SongEditSection(songEdit, albumId);
+                editSongSection.innerHTML = SongEditSection(songEdit, albumId);
             }
         )
     }
