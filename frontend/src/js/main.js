@@ -8,6 +8,7 @@ import ArtistPostSection from "./components/artistPost_section";
 import AlbumPostSection from "./components/albumPost_section";
 import Album from "./components/album";
 import SongPostSection from "./components/songPost_section";
+import AlbumEditSection from "./components/albumPost_section";
 
 const appDiv = document.querySelector('.app');
 
@@ -295,6 +296,57 @@ appDiv.addEventListener('click', function(){
 
         apiActions.deleteRequest(
             `https://localhost:44313/api/album/${albumId}`,
+            artistCallback
+        )
+    }
+})
+appDiv.addEventListener("click", function () {
+    if (event.target.classList.contains('edit-album__button')) {
+        const albumId = event.target.parentElement.querySelector('edit-album__button').id;
+        const artistId = event.target.parentElement.querySelector('.artistId').value;
+        console.log(album.id)
+        console.log(artist.id)        
+        apiActions.getRequest(
+            `https://localhost:44313/api/album/${albumId}` ,
+            albumEdit => {
+                console.log(albumEdit);
+                appDiv.innerHTML = AlbumEditSection(albumEdit);
+            }
+        )
+    }
+})
+
+appDiv.addEventListener("click", function () {
+    if (event.target.classList.contain('edit-album__submit')) {
+        const albumName = event.target.parentElement.querySelector('.edit-album__albumName').value;
+        const imageName = event.target.parentElement.querySelector('.edit-album__albumImageName').value;
+        const releaseYear = event.target.parentElement.querySelector('.edit-album__releaseYear').value;
+        const recordLabel = event.target.parentElement.querySelector('.edit-album__recordLabel').value;
+        const genre = event.target.parentElement.querySelector('.edit-album__albumGenre').value;
+        const artistId = event.target.parentElement.querySelector('.edit-album__artistId').value;
+
+        const albumEdit = {
+            Name: albumName,
+            ImageName: imageName,
+            ReleaseYear: releaseYear,
+            RecordLabel: recordLabel,
+            Genre: genre,
+            ArtistId: artistId
+        };
+        console.log(albumEdit)
+        const artistCallback = () => {
+            apiActions.getRequest(
+                `https://localhost:44313/api/artist/${artistId}`,
+                artist => {
+                    console.log("In callback");
+                    console.log(artist);
+                    appDiv.innerHTML = Artist(artist);
+                    albumNameButton();
+                })
+        }
+        apiActions.putRequest(
+            `https://localhost:44313/api/album/${albumId}`,
+            albumEdit,
             artistCallback
         )
     }
