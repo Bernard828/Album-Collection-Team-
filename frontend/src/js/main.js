@@ -40,22 +40,22 @@ function navHome() {
 
 }
 
-function navArtist(artistId, artistName) {
-    const variableButtonElement = document.querySelector('.nav__variable');
-    variableButtonElement.removeAttribute("hidden");
-    variableButtonElement.innerHTML = artistName;
-    variableButtonElement.addEventListener('click', function () {
-        const endpoint = `https://localhost:44313/api/artist/${artistId}`;
-        const callBack = artist => {
-            appDiv.innerHTML = Artist(artist);
-            albumNameButton();
-            console.log("before setAttribute");
-            variableButtonElement.setAttribute("hidden", "true");
-            console.log("after setAttribute");
-        };
-        apiActions.getRequest(endpoint, callBack); 
-    })
-}
+// function navArtist(artistId, artistName) {
+//     const variableButtonElement = document.querySelector('.nav__variable');
+//     variableButtonElement.removeAttribute("hidden");
+//     variableButtonElement.innerHTML = artistName;
+//     variableButtonElement.addEventListener('click', function () {
+//         const endpoint = `https://localhost:44313/api/artist/${artistId}`;
+//         const callBack = artist => {
+//             appDiv.innerHTML = Artist(artist);
+//             albumNameButton();
+//             console.log("before setAttribute");
+//             variableButtonElement.setAttribute("hidden", "true");
+//             console.log("after setAttribute");
+//         };
+//         apiActions.getRequest(endpoint, callBack); 
+//     })
+// }
 
 
 function showArtists() {
