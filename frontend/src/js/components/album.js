@@ -5,7 +5,7 @@ export default function Album(album) {
     <ol class="song-collection">
     ${album.songs.map(song => {
         return `
-        <li>${song.title} -- ${song.duration} <button class="delete-song__button" Id="${song.id}" value="${album.id}">Delete Song</button></li>
+        <li>${song.title} -- ${song.duration} <button class="delete-song__button" Id="${song.id}" value="${album.id}">Delete Song</button><button class="update-song__button" Id="${song.id}" value="${album.id}">Update Song</button></li>
         `
       }).join("")}
     </ol>    
