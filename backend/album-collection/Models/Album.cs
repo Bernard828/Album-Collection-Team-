@@ -21,19 +21,5 @@ namespace album_collection.Models
         public virtual Artist Artist { get; set; }
         public int ArtistId { get; set; }
 
-        //public Album()
-        //{
-
-        //}
-
-        //public Album(int id, string name, string imageName, int releaseYear, string recordLabel, string genre)
-        //{
-        //    this.Name = name;
-        //    this.ImageName = imageName;
-        //    this.Id = id;
-        //    this.ReleaseYear = releaseYear;
-        //    this.RecordLabel = recordLabel;
-        //    this.Genre = genre;
-        //}
     }
 }

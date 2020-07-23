@@ -15,19 +15,5 @@ namespace album_collection.Models
 
         public virtual IEnumerable<Album> Albums { get; set; }
 
-        //public Artist()
-        //{
-            
-        //}
-
-
-        //public Artist(int id, string name, string imageName, int age, string homeTown)
-        //{
-        //    this.Id = id;
-        //    this.Name = name;
-        //    this.ImageName = imageName;
-        //    this.Age = age;
-        //    this.HomeTown = homeTown;
-        //}
     }
 }
