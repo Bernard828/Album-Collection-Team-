@@ -13,25 +13,5 @@ namespace album_collection.Repositories
         {
         }
 
-    //    private AlbumCollectionAPIcontext db;
-    //    public ArtistRepository(AlbumCollectionAPIcontext otherDb)
-    //    {
-    //        this.db = otherDb;
-    //    }
-
-    //    public void Create(Artist obj)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public IEnumerable<Artist> GetAll()
-    //    {
-    //        return db.Artists;
-    //    }
-
-    //    public Artist GetById(int id)
-    //    {
-    //        return db.Artists.FirstOrDefault(x => x.Id == id);
-    //    }
     }
 }

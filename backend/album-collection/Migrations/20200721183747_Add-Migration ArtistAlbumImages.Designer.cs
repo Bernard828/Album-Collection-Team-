@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using album_collection.Context;
 
 namespace album_collection.Migrations
 {
     [DbContext(typeof(AlbumCollectionAPIcontext))]
-    partial class AlbumCollectionAPIcontextModelSnapshot : ModelSnapshot
+    [Migration("20200721183747_Add-Migration ArtistAlbumImages")]
+    partial class AddMigrationArtistAlbumImages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,7 +175,7 @@ namespace album_collection.Migrations
                             Id = 5,
                             Age = 68,
                             HomeTown = "LA",
-                            ImageName = "GunsNRoses.jpg",
+                            ImageName = "GunsNRoses",
                             Name = "Guns n' Roses"
                         });
                 });
