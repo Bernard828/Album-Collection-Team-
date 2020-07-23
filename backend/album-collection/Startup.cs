@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using album_collection.Models;
-using album_collection.Repositories;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Newtonsoft.Json;
 
